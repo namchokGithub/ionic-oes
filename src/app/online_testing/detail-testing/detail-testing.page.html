@@ -1,0 +1,106 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>รายละเอียดข้อสอบ</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-list>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="4">
+                            <div>
+                                รหัสวิชา
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div>
+                                {{this.code_name}}
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="4">
+                            <div>
+                                ชื่อวิชา
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div>
+                                {{this.course_name}}
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="4">
+                            <div>
+                                คำอธิบาย
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div>
+                                {{this.course_description}}
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="4">
+                            <div>
+                                จำนวนข้อสอบ
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div>
+                                {{this.amount_testing}} ข้อ
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="4">
+                            <div>
+                                เวลา
+                            </div>
+                        </ion-col>
+                        <ion-col>
+                            <div>
+                                {{this.time}} นาที
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="onGoToNextPage()" color="success" expand="block">เริ่มทำการสอบ</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title style="font-size: 10px;" text-center="text-center">create by kittisak</ion-title>
+    </ion-toolbar>
+</ion-footer>

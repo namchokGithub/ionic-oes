@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
+import { Platform, LoadingController, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -10,23 +9,38 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  public user: string;
+  public pass: string;
+
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
+      title: 'หน้าแรก',
+      url: '/menu',
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'ทำข้อสอบออนไลน์',
+      url: '/list-testing',
+      icon: 'book'
+    },
+    {
+      title: 'ผลการสอบ',
+      url: '/review-student',
+      icon: 'clipboard'
+    },
+    {
+      title: 'ออกจากระบบ',
+      url: '/home',
+      icon: 'unlock'
     }
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private loadingController: LoadingController,
+    private navCtrl: NavController
   ) {
     this.initializeApp();
   }

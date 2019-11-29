@@ -12,9 +12,28 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  }
+    path: 'list_test',
+    redirectTo: 'list-testing',
+    pathMatch: 'full'
+  },
+  {
+    path: 'list-testing',
+    loadChildren: () => import('./online_testing/list-testing/list-testing.module').then(m => m.ListTestingPageModule)
+  },
+  {
+    path: 'review-student',
+    loadChildren: () => import('./Exam_review/review-student/review-student.module').then(m => m.ReviewStudentPageModule)
+  },
+  {
+    path: 'detail-testing',
+    loadChildren: () => import('./online_testing/detail-testing/detail-testing.module').then(m => m.DetailTestingPageModule)
+  },
+  {
+    path: 'testing',
+    loadChildren: () => import('./online_testing/testing/testing.module').then(m => m.TestingPageModule)
+  },
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
+  { path: 'review-student', loadChildren: './Exam_review/review-student/review-student.module#ReviewStudentPageModule' }
 ];
 
 @NgModule({
@@ -23,4 +42,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,0 +1,91 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>แสดงผลการสอบ</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-list lines="none">
+            <ion-list-header>
+                <h3>ค้นหารายการสอบ/h3>
+            </ion-list-header>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-label align-self-center>วิชา
+                            <ion-text color="danger">*</ion-text>
+                        </ion-label>
+                        <ion-select placeholder="โปรดเลือก" name="crsId" [(ngModel)]="crsId">
+                            <ion-select-option *ngFor="let rs_subject of rs_subject;let i = index"
+                                [value]="rs_subject.crsId">{{rs_subject.crsName}}</ion-select-option>
+                        </ion-select>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-label align-self-center>ปีการศึกษา
+                            <ion-text color="danger">*</ion-text>
+                        </ion-label>
+                        <ion-select name="Year" [(ngModel)]="Year">
+                            <ion-select-option *ngFor="let rs_year of rs_year;let i = index" [value]="rs_year.Year">
+                                {{rs_year.Year}}</ion-select-option>
+                        </ion-select>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item>
+                <ion-grid>
+                    <ion-row>
+
+                        <ion-label align-self-center>ภาคการศึกษา
+                            <ion-text color="danger">*</ion-text>
+                        </ion-label>
+                        <ion-select name="crs_term" [(ngModel)]="crs_term">
+                            <ion-select-option value="1" selected="true">1</ion-select-option>
+                            <ion-select-option value="2">2</ion-select-option>
+                            <ion-select-option value="3">3</ion-select-option>
+                        </ion-select>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="show_result_exam_student()" color="primary" float-right>ค้นหา</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-card>
+        <ion-grid>
+            <ion-row class="ion-text-center">
+                <ion-col>
+                    <h5>ชื่อชุดข้อสอบ</h5>
+                </ion-col>
+                <ion-col>
+                    <h5>คะแนน</h5>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-text-center"
+                *ngFor="let rs_result_exam_student of rs_result_exam_student;let i = index">
+                <ion-col>
+                    <ion-label>{{rs_result_exam_student.ib_name}}</ion-label>
+                </ion-col>
+                <ion-col>
+                    <div *ngIf="rs_result_exam_student.asr_score != NULL ; else elseBlock">
+                        <ion-label>{{rs_result_exam_student.asr_score}}</ion-label>
+                    </div>
+                    <ng-template #elseBlock>
+                        <ion-label>-</ion-label>
+                    </ng-template>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+</ion-content>

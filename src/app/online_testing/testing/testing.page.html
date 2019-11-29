@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>ทำข้อสอบออนไลน์</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+    <ion-slides [options]="slideOpts" pager="true">
+        <ion-slide *ngFor="let question of list_question, let i = index">
+            <ion-card>
+                <ion-card-header class="ion-text-start">
+                    <h6>
+                        ข้อ {{i+1}}
+                        <br>
+                        {{question.question}}
+                    </h6>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-list class="ion-text-start">
+                        <ion-radio-group>
+                            <div *ngFor="let choice of list_choice">
+                                <ion-grid *ngIf=" choice.qt_id == question.qt_id">
+                                    <ion-row>
+                                        <ion-col size="11" size-lg align-items-start>
+                                            {{choice.choices_text}}
+                                        </ion-col>
+                                        <ion-col size="1" size-lg>
+                                            <ion-radio (ionSelect)="insert_choice(choice.choices_id,choice.qt_id)">
+                                            </ion-radio>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </div>
+                        </ion-radio-group>
+                    </ion-list>
+                </ion-card-content>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="3" size-lg>
+                    <ion-button (click)="cancle()">
+                        <ion-icon name="arrow-round-back"></ion-icon>
+                    </ion-button>
+                </ion-col>
+                <ion-col size="9" size-lg>
+                    <ion-button (click)="send()" *ngIf="this.show_button" expand="block">
+                        send
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

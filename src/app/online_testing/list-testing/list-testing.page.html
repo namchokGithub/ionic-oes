@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>รายการสอบ</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-list lines="none">
+            <ion-list-header>
+                <h3>ค้นหารายการสอบ</h3>
+            </ion-list-header>
+            <ion-item>
+                <ion-label>ชื่อรายวิชา</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-select name="name_subject" [(ngModel)]="name_subject" placeholder="ชื่อรายวิชา">
+                    <div *ngFor="let sub of subject">
+                        <ion-select-option value="{{sub.course_code}}"> {{sub.course_name}}</ion-select-option>
+                    </div>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>ประเภทการสอบ</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-select name="type_exam" [(ngModel)]="type_exam" placeholder="โปรดเลือก">
+                    <ion-select-option value="1" selected>สอบเก็บคะแนน</ion-select-option>
+                    <ion-select-option value="2">สอบกลางภาค</ion-select-option>
+                    <ion-select-option value="3">สอบปลายภาค</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card>
+        <ion-list>
+            <ion-list-header>
+                <h3>รายการสอบ</h3>
+            </ion-list-header>
+            <div *ngFor="let list of listtest;let i = index">
+                <ion-item detail="false" (click)='onGoToNextPage(list.id)'
+                    *ngIf="(type_exam == list.type_exam && name_subject == list.code_sub) && list.status_test != 0">
+                    <ion-label>
+                        {{list.test_name}}
+                    </ion-label>
+                    <ion-icon name="create"></ion-icon>
+                </ion-item>
+            </div>
+        </ion-list>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-title style="font-size: 10px;" text-center="text-center">create by Team 2</ion-title>
+    </ion-toolbar>
+</ion-footer>
