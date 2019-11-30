@@ -2,14 +2,14 @@
     <ion-split-pane contentId="main-content">
         <ion-menu contentId="main-content" type="overlay">
             <ion-header>
-                <ion-toolbar>
+                <ion-toolbar class="bg-toolbar">
                     <ion-title>ข้อสอบออนไลน์</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <ion-content>
-                <ion-list>
-                    <ion-menu-toggle *ngFor="let list of appPages" auto-hide="true">
-                        <ion-item [routerDirection]="'root'" [routerLink]="[list.url]">
+            <ion-content class="bg">
+                <ion-list class="bg py-0" >
+                    <ion-menu-toggle *ngFor="let list of appPages" auto-hide="true" class="bg">
+                        <ion-item class="bg" [routerDirection]="'root'" [routerLink]="[list.url]">
                             <ion-icon [name]="list.icon" slot="start"></ion-icon>
                             <ion-label>
                                 {{list.title}}
