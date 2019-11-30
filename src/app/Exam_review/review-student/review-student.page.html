@@ -1,17 +1,18 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar class="bg-toolbar">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>แสดงผลการสอบ</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content>
-    <ion-card>
+
+<ion-content class="bg">
+    <ion-card class="bg-gradient-purple">
+        <ion-card-header>
+            <h3>ค้นหารายการสอบ</h3>
+        </ion-card-header>
         <ion-list lines="none">
-            <ion-list-header>
-                <h3>ค้นหารายการสอบ</h3>
-            </ion-list-header>
             <ion-item>
                 <ion-grid>
                     <ion-row>
@@ -30,7 +31,8 @@
             <ion-item>
                 <ion-grid>
                     <ion-row>
-                        <ion-label align-self-center>ปีการศึกษา
+                        <ion-label align-self-center>
+                            ปีการศึกษา
                             <ion-text color="danger">*</ion-text>
                         </ion-label>
                         <ion-select name="Year" [(ngModel)]="Year">
@@ -44,7 +46,8 @@
                 <ion-grid>
                     <ion-row>
 
-                        <ion-label align-self-center>ภาคการศึกษา
+                        <ion-label align-self-center>
+                            ภาคการศึกษา
                             <ion-text color="danger">*</ion-text>
                         </ion-label>
                         <ion-select name="crs_term" [(ngModel)]="crs_term">
@@ -55,39 +58,44 @@
                     </ion-row>
                 </ion-grid>
             </ion-item>
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="show_result_exam_student()" color="primary" float-right>ค้นหา</ion-button>
+                </ion-col>
+            </ion-row>
         </ion-list>
     </ion-card>
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                <ion-button (click)="show_result_exam_student()" color="primary" float-right>ค้นหา</ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-    <ion-card>
-        <ion-grid>
-            <ion-row class="ion-text-center">
-                <ion-col>
-                    <h5>ชื่อชุดข้อสอบ</h5>
-                </ion-col>
-                <ion-col>
-                    <h5>คะแนน</h5>
-                </ion-col>
-            </ion-row>
-            <ion-row class="ion-text-center"
-                *ngFor="let rs_result_exam_student of rs_result_exam_student;let i = index">
-                <ion-col>
-                    <ion-label>{{rs_result_exam_student.ib_name}}</ion-label>
-                </ion-col>
-                <ion-col>
-                    <div *ngIf="rs_result_exam_student.asr_score != NULL ; else elseBlock">
-                        <ion-label>{{rs_result_exam_student.asr_score}}</ion-label>
-                    </div>
-                    <ng-template #elseBlock>
-                        <ion-label>-</ion-label>
-                    </ng-template>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+
+    <ion-card class="bg-gradient-purple">
+        <ion-card-header>
+            <h3>ผลการสอบ</h3>
+        </ion-card-header>
+        <ion-item>
+            <ion-grid>
+                <ion-row class="ion-text-center">
+                    <ion-col>
+                        <h5>ชื่อชุดข้อสอบ</h5>
+                    </ion-col>
+                    <ion-col>
+                        <h5>คะแนน</h5>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="ion-text-center"
+                    *ngFor="let rs_result_exam_student of rs_result_exam_student;let i = index">
+                    <ion-col>
+                        <ion-label>{{rs_result_exam_student.ib_name}}</ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <div *ngIf="rs_result_exam_student.asr_score != NULL ; else elseBlock">
+                            <ion-label>{{rs_result_exam_student.asr_score}}</ion-label>
+                        </div>
+                        <ng-template #elseBlock>
+                            <ion-label>-</ion-label>
+                        </ng-template>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
     </ion-card>
+
 </ion-content>
