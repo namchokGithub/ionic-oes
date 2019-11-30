@@ -32,8 +32,8 @@ const routes: Routes = [
     path: 'testing',
     loadChildren: () => import('./online_testing/testing/testing.module').then(m => m.TestingPageModule)
   },
-  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-  { path: 'review-student', loadChildren: './Exam_review/review-student/review-student.module#ReviewStudentPageModule' }
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' }
+  ,{ path: 'review-student', loadChildren: './Exam_review/review-student/review-student.module#ReviewStudentPageModule' }
 ];
 
 @NgModule({

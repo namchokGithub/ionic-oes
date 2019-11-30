@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { MenuController, LoadingController, NavController } from '@ionic/angular';
 
 
@@ -28,7 +28,12 @@ export class HomePage {
     }).then((res) => {
       res.present();
       res.onDidDismiss().then((dis) => {
-        this.navCtrl.navigateRoot('/menu')
+        let navigationExtras: NavigationExtras = {
+          state: {
+            username: this.username
+          }
+        };
+        this.navCtrl.navigateRoot(['/menu'], navigationExtras)
       });
     });
   }
