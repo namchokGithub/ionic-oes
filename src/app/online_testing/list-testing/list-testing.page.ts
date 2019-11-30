@@ -7,10 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-testing.page.scss'],
 })
 export class ListTestingPage implements OnInit {
+
   public listtest: any[]
   public subject: any[]
   private name_subject: string
   private type_exam: number
+
   constructor(public OnlineTestingService: OnlineTestingService, public router: Router) {
     this.get_testing()
     this.get_subject()
@@ -26,12 +28,14 @@ export class ListTestingPage implements OnInit {
       console.log(response)
     });
   }
+
   get_testing() {
     this.OnlineTestingService.getTesting().subscribe((response) => {
       this.listtest = response;
       console.log(response)
     });
   }
+  
   onGoToNextPage(id: number) {
     this.router.navigate(['/detail-testing'], {
       queryParams: {

@@ -8,3 +8,16 @@ ion-content ion-card{
 .active{
     background-color:red
 }
+
+.bg-gradient-blue {
+    --background: linear-gradient(to bottom right, #3366ff 0%, #6699ff 55%) !important;
+    --color: white;
+}
+
+.bg {
+    --background: #dae8ee !important;
+}
+  
+.bg-toolbar {
+    --background: #c9e5f1 !important;
+}

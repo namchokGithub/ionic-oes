@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>รายการสอบ</ion-title>
+        <ion-title> ทำข้อสอบออนไลน์ </ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -27,9 +27,9 @@
         </ion-item>
         <ion-item>
             <ion-select name="type_exam" [(ngModel)]="type_exam" placeholder="โปรดเลือก">
-                <ion-select-option value="1" selected>สอบเก็บคะแนน</ion-select-option>
-                <ion-select-option value="2">สอบกลางภาค</ion-select-option>
-                <ion-select-option value="3">สอบปลายภาค</ion-select-option>
+                <ion-select-option value="1" selected with="100px !important">สอบเก็บคะแนน</ion-select-option>
+                <ion-select-option value="2" with="100px !important">สอบกลางภาค</ion-select-option>
+                <ion-select-option value="3" with="100px !important">สอบปลายภาค</ion-select-option>
             </ion-select>
         </ion-item>
     </ion-card>
@@ -40,20 +40,20 @@
         </ion-card-header>
         <ion-list>
             <div *ngFor="let list of listtest;let i = index">
-                <ion-item detail="false" (click)='onGoToNextPage(list.id)'
+                <ion-item detail="false" (click)='onGoToNextPage(list.asg_id)'
                     *ngIf="(type_exam == list.type_exam && name_subject == list.code_sub) && list.status_test != 0">
                     <ion-label>
                         {{list.test_name}}
                     </ion-label>
-                    <ion-icon name="create"></ion-icon>
-                </ion-item>
+                    <ion-img style="height: 25px; width: 25px;"src="../../assets/image/play.png"></ion-img>
+                </ion-item> 
             </div>
         </ion-list>
     </ion-card>
 </ion-content>
 
 <ion-footer>
-    <ion-toolbar>
-        <ion-title style="font-size: 10px;" text-center="text-center">create by Team 2</ion-title>
+    <ion-toolbar class="bg-toolbar">
+        <ion-title style="font-size: 15px;" text-center="text-center">create by Team 2</ion-title>
     </ion-toolbar>
 </ion-footer>

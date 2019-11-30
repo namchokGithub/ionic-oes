@@ -1,13 +1,19 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar class="bg-toolbar">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>รายละเอียดข้อสอบ</ion-title>
+        <ion-title> ทำข้อสอบออนไลน์ </ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content>
+
+<ion-content class="bg">
     <ion-card>
+
+        <ion-card-header class="bg-gradient-blue">
+            <h3> รายละเอียดการสอบ </h3>
+        </ion-card-header>
+
         <ion-list>
             <ion-item>
                 <ion-grid>
@@ -91,6 +97,7 @@
             </ion-item>
         </ion-list>
     </ion-card>
+
     <ion-grid>
         <ion-row>
             <ion-col>
@@ -98,9 +105,5 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+
 </ion-content>
-<ion-footer>
-    <ion-toolbar>
-        <ion-title style="font-size: 10px;" text-center="text-center">create by kittisak</ion-title>
-    </ion-toolbar>
-</ion-footer>

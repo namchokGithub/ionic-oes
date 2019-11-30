@@ -29,13 +29,12 @@ export class DetailTestingPage implements OnInit {
     const loading = await this.loadingController.create({
       spinner: 'lines',
       duration: 500,
-      message: 'Please wait...',
+      message: 'รอสักครู่...',
       translucent: true
     }).then((res) => {
       res.present();
       res.onDidDismiss().then((dis) => {
         this.navCtrl.navigateRoot('/testing')
-        console.log('Loading dismissed!');
       });
     });
   }

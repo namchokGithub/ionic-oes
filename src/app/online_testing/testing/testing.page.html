@@ -1,25 +1,26 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar class="bg-toolbar">
         <ion-title>ทำข้อสอบออนไลน์</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content fullscreen>
+
+<ion-content fullscreen class="bg">
     <ion-slides [options]="slideOpts" pager="true">
         <ion-slide *ngFor="let question of list_question, let i = index">
-            <ion-card>
-                <ion-card-header class="ion-text-start">
+            <ion-card >
+                <ion-card-header class="ion-text-start bg-gradient-blue ">
                     <h6>
                         ข้อ {{i+1}}
                         <br>
                         {{question.question}}
                     </h6>
                 </ion-card-header>
-                <ion-card-content>
-                    <ion-list class="ion-text-start">
+                <ion-card-content style="background: white;">
+                    <ion-list class="ion-text-start bg m-0 p-0">
                         <ion-radio-group>
-                            <div *ngFor="let choice of list_choice">
+                            <div *ngFor="let choice of list_choice" >
                                 <ion-grid *ngIf=" choice.qt_id == question.qt_id">
-                                    <ion-row>
+                                    <ion-row class="bg">
                                         <ion-col size="11" size-lg align-items-start>
                                             {{choice.choices_text}}
                                         </ion-col>
@@ -37,8 +38,9 @@
         </ion-slide>
     </ion-slides>
 </ion-content>
-<ion-footer>
-    <ion-toolbar>
+
+<ion-footer >
+    <ion-toolbar class="bg-toolbar">
         <ion-grid>
             <ion-row>
                 <ion-col size="3" size-lg>
@@ -47,8 +49,9 @@
                     </ion-button>
                 </ion-col>
                 <ion-col size="9" size-lg>
-                    <ion-button (click)="send()" *ngIf="this.show_button" expand="block">
-                        send
+                    <ion-button color="success" (click)="send()" *ngIf="this.show_button" expand="block">
+                        ส่งคำตอบ
+                        <ion-img style="height: 25px; width: 25px;margin-left: 10px;"src="../../assets/image/send-button    .png"></ion-img>
                     </ion-button>
                 </ion-col>
             </ion-row>
