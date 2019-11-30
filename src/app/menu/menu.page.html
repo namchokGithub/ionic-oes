@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar class="bg">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -7,12 +7,20 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg">
+
+    <ion-chip class="m-3 mb-0">
+        <ion-avatar>
+            <img src="https://image.flaticon.com/icons/svg/145/145849.svg">
+        </ion-avatar>
+        <ion-label>สวัสดีคุณ {{username}}</ion-label>
+    </ion-chip>
+
     <!-- เมนูทำข้อสอบออนไลน์ -->
-    <ion-card color="success" routerLink="/list-testing">
+    <ion-card id="online-testing" routerLink="/list-testing" class="mt-0">
         <ion-card-header>
-            <ion-card-subtitle>นักเรียน</ion-card-subtitle>
-            <ion-card-title>ทำข้อสอบออนไลน์</ion-card-title>
+            <ion-card-subtitle class="text-white">นักเรียน</ion-card-subtitle>
+            <ion-card-title class="text-white">ทำข้อสอบออนไลน์</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -22,10 +30,10 @@
     <!-- สิ้นสุดเมนูทำข้อสอบออนไลน์ -->
 
     <!-- เมนูแสดงผลการสอบ -->
-    <ion-card color="primary" routerLink="/review-student">
+    <ion-card id="review" routerLink="/review-student">
         <ion-card-header>
-            <ion-card-subtitle>นักเรียน</ion-card-subtitle>
-            <ion-card-title>แสดงผลการสอบ</ion-card-title>
+            <ion-card-subtitle class="text-white">นักเรียน</ion-card-subtitle>
+            <ion-card-title class="text-white">แสดงผลการสอบ</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>

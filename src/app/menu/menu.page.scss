@@ -3,3 +3,15 @@
 * {
     font-family: 'Prompt', sans-serif;
   }
+
+.bg {
+  --background: #dae8ee !important;
+}
+
+#online-testing {
+  --background: linear-gradient(to bottom right, #3366ff 0%, #6699ff 55%);
+}
+
+#review {
+  background: linear-gradient(to top left, #cc33ff 0%, #cc0099 55%);
+}
