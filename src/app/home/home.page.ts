@@ -10,6 +10,8 @@ import { MenuController, LoadingController, NavController } from '@ionic/angular
 })
 export class HomePage {
 
+  private username : string;
+
   constructor(private menuCtrl: MenuController, private loadingController: LoadingController, private navCtrl: NavController) { }
   
   ngOnInit() {
@@ -17,16 +19,16 @@ export class HomePage {
   }
 
   async login() {
+    console.log(this.username)
     const loading = await this.loadingController.create({
       spinner: 'lines',
-      duration: 200,
-      message: 'Please wait...',
+      duration: 100,
+      message: 'รอสักครู่...',
       translucent: true
     }).then((res) => {
       res.present();
       res.onDidDismiss().then((dis) => {
         this.navCtrl.navigateRoot('/menu')
-        console.log('Loading dismissed!');
       });
     });
   }
