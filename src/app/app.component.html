@@ -11,7 +11,7 @@
                     <ion-menu-toggle *ngFor="let list of appPages" auto-hide="true" class="bg">
                         <ion-item class="bg" [routerDirection]="'root'" [routerLink]="[list.url]">
                             <ion-icon [name]="list.icon" slot="start"></ion-icon>
-                            <ion-label>
+                            <ion-label style="font-family: 'Prompt', sans-serif;">
                                 {{list.title}}
                             </ion-label>
                         </ion-item>
