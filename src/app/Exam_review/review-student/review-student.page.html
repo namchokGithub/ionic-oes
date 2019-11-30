@@ -15,12 +15,14 @@
             <ion-item>
                 <ion-grid>
                     <ion-row>
-                        <ion-label align-self-center>วิชา
+                        <ion-label align-self-center style="font-family: 'Prompt', sans-serif;">
+                            วิชา
                             <ion-text color="danger">*</ion-text>
                         </ion-label>
-                        <ion-select placeholder="โปรดเลือก" name="crsId" [(ngModel)]="crsId">
-                            <ion-select-option *ngFor="let rs_subject of rs_subject;let i = index"
-                                [value]="rs_subject.crsId">{{rs_subject.crsName}}</ion-select-option>
+                        <ion-select placeholder="โปรดเลือก" name="crsId" [(ngModel)]="crsId" >
+                            <ion-select-option style="font-family: 'Prompt', sans-serif;" *ngFor="let rs_subject of rs_subject;let i = index"
+                                [value]="rs_subject.crsId">{{rs_subject.crsName}}
+                            </ion-select-option>
                         </ion-select>
                     </ion-row>
                 </ion-grid>
