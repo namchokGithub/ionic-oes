@@ -46,7 +46,7 @@ export class DetailTestingPage implements OnInit {
       this.course_name = response.qu_detail_testing['course_name']
       this.course_description = response.qu_detail_testing['course_description']
       this.amount_testing = response.qu_detail_testing['amount_testing']
-      this.time = response.qu_detail_testing['time']
+      this.time = response.qu_detail_testing['time_testing']
     });
   }
 
