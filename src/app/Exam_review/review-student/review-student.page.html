@@ -80,18 +80,19 @@
                         <h5>คะแนน</h5>
                     </ion-col>
                 </ion-row>
-                <ion-row class="ion-text-center"
-                    *ngFor="let rs_result_exam_student of rs_result_exam_student;let i = index">
+                <ion-row class="ion-text-center" *ngFor="let rs_result_exam_student of rs_result_exam_student;let i = index">
                     <ion-col>
                         <ion-label>{{rs_result_exam_student.ib_name}}</ion-label>
                     </ion-col>
                     <ion-col>
+                        <!-- แสดงคะแนน -->
                         <div *ngIf="rs_result_exam_student.asr_score != NULL ; else elseBlock">
                             <ion-label>{{rs_result_exam_student.asr_score}}</ion-label>
                         </div>
                         <ng-template #elseBlock>
                             <ion-label>-</ion-label>
                         </ng-template>
+                        <!-- สิ้นสุดแสดงคะแนน -->
                     </ion-col>
                 </ion-row>
             </ion-grid>

@@ -18,18 +18,16 @@ export class ReviewStudentPage implements OnInit {
   constructor(private ReviewTestingService:ReviewTestingService) { }
 
   ngOnInit() {
-    
+    this.get_subject()
+    // this.show_result_exam_student()
   }
 
   get_subject() {
 
-    console.log('เข้าฟังก์ชันแล้ว')
-
     this.ReviewTestingService.get_subject().subscribe(result => {
+      console.log(result)
       this.rs_subject = result.rs_subject
       this.rs_year = result.rs_year
-
-      console.log("ดึงข้อมูลวิชา(สำเร็จ)")
       console.log(this.rs_subject)
       console.log(this.rs_year)
 
@@ -38,13 +36,10 @@ export class ReviewStudentPage implements OnInit {
   }
 
   show_result_exam_student() {
-
-
+    console.log('show_result_exam_student')
     this.ReviewTestingService.show_result_exam_student(this.crsId, this.Year, this.crs_term).subscribe(result => {
-      this.rs_result_exam_student = result.rs_result_exam_student
-      console.log("ดึงผลการสอบ(สำเร็จ)")
+      this.rs_result_exam_student = result
       console.log(this.rs_result_exam_student)
-     
     })
 
   }
