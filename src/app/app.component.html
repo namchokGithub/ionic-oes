@@ -1,12 +1,25 @@
-<ion-app>
-    <ion-split-pane contentId="main-content">
-        <ion-menu contentId="main-content" type="overlay">
+<ion-app (click)="loadName()">
+    <ion-split-pane contentId="main-content" >
+        <ion-menu contentId="main-content" type="overlay" >
             <ion-header>
                 <ion-toolbar class="bg-toolbar">
                     <ion-title>ข้อสอบออนไลน์</ion-title>
                 </ion-toolbar>
             </ion-header>
             <ion-content class="bg">
+                <ion-card id="card" color="light">
+                    <ion-card-header>
+                        <ion-row>
+                            <ion-col size="3"> 
+                                <img src="{{site_img}}" class="profile-photo">
+                            </ion-col>
+                            <ion-col>
+                                <h3 class="ml-3 text-card-info">สวัสดี</h3>
+                                <h4 class="ml-3 text-card-info">{{name}}</h4>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-header>
+                </ion-card>
                 <ion-list class="bg py-0" >
                     <ion-menu-toggle *ngFor="let list of appPages" auto-hide="true" class="bg">
                         <ion-item class="bg" [routerDirection]="'root'" [routerLink]="[list.url]">

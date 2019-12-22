@@ -9,19 +9,12 @@
 
 <ion-content class="bg">
 
-    <ion-card id="card-info">
-        <ion-card-header>
-            <ion-row>
-                <ion-col size="4"> 
-                    <img src="{{site_img}}" class="profile-photo">
-                </ion-col>
-                <ion-col>
-                    <h3 class="ml-3 text-card-info">สวัสดี</h3>
-                    <h2 class="ml-3 text-card-info">{{name}}</h2>
-                </ion-col>
-            </ion-row>
-        </ion-card-header>
-    </ion-card>
+    <div class="row mt-2 ml-2 mb-1">
+        <ion-chip outline color="dark">
+            <ion-icon color="danger" name="heart"></ion-icon>
+            <ion-label>สวัสดี {{name}}</ion-label>
+        </ion-chip>
+    </div>
 
     <!-- เมนูทำข้อสอบออนไลน์ -->
     <ion-card id="online-testing" routerLink="/list-testing" class="mt-0">

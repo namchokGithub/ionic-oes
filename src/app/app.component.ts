@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, LoadingController, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { MenuService } from './api/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  public user: string;
-  public pass: string;
+
+  private name : string = "Name";
+  private site_img : string = "";
 
   public appPages = [
     {
@@ -40,8 +42,10 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private loadingController: LoadingController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private menuService: MenuService
   ) {
+    this.loadName()
     this.initializeApp();
   }
 
@@ -50,5 +54,10 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  loadName() {
+    this.name = this.menuService.get_name()
+    this.site_img = this.menuService.get_site_img()
   }
 }
