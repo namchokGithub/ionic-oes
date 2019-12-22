@@ -9,24 +9,29 @@
 
 <ion-content class="bg">
     <ion-card class="bg-gradient-blue">
+        <!-- Header -->
         <ion-card-header>
             <h3>ค้นหารายการสอบ</h3>
         </ion-card-header>
+
+        <!-- List subject -->
         <ion-item>
             <ion-label>ชื่อรายวิชา</ion-label>
         </ion-item>
         <ion-item>
             <ion-select name="name_subject" [(ngModel)]="name_subject" placeholder="ชื่อรายวิชา">
                 <div *ngFor="let sub of subject">
-                    <ion-select-option value="{{sub.course_code}}"> {{sub.course_name}}</ion-select-option>
+                    <ion-select-option value="{{sub.sub_code_th}}"> {{sub.ib_name}}</ion-select-option>
                 </div>
             </ion-select>
         </ion-item>
+
+        <!-- Type examination -->
         <ion-item>
             <ion-label>ประเภทการสอบ</ion-label>
         </ion-item>
         <ion-item lines="none">
-            <ion-select name="type_exam" [(ngModel)]="type_exam" placeholder="โปรดเลือก">
+            <ion-select name="type_exam" [(ngModel)]="type_exam" placeholder="โปรดเลือก" (click)="test()">
                 <ion-select-option value="1" selected with="100px !important">สอบเก็บคะแนน</ion-select-option>
                 <ion-select-option value="2" with="100px !important">สอบกลางภาค</ion-select-option>
                 <ion-select-option value="3" with="100px !important">สอบปลายภาค</ion-select-option>
@@ -36,10 +41,10 @@
 
     <ion-card class="bg-gradient-blue">
         <ion-card-header>
-                <h3>รายการสอบ</h3>
+            <h3>รายการสอบ</h3>
         </ion-card-header>
         <ion-list>
-            <div *ngFor="let list of listtest;let i = index">
+            <div *ngFor="let list of listtest; let i = index">
                 <ion-item detail="false" (click)='onGoToNextPage(list.asg_id)'
                     *ngIf="(type_exam == list.type_exam && name_subject == list.code_sub) && list.status_test != 0">
                     <ion-label>

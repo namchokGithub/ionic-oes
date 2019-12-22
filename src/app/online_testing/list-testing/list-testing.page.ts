@@ -48,4 +48,9 @@ export class ListTestingPage implements OnInit {
     console.log(this.name_subject)
   }
 
+  test(){
+    console.log(this.name_subject)
+    console.log(this.type_exam)
+  }
+
 }
