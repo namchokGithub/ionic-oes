@@ -1,9 +1,19 @@
 $white-color: #fff;
 $height100: 100%;
+$backgroundColor: #74cffa;
+
+@import url('https://fonts.googleapis.com/css?family=Itim&display=swap');
+
+.itim {
+    font-family: 'Itim', cursive !important;
+    font-size: 30px;
+    font-weight: bold;
+    color: $white-color;
+}
 
 .bg-color{
-    background: #a4d1e6 !important;
-}
+    background: $backgroundColor !important;
+} 
 
 ion-img{
     height: 70vh;
