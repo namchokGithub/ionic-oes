@@ -104,7 +104,7 @@ export class TestingPage implements OnInit {
   insert_choice(choice_id: number, qt_id: number) {
     this.OnlineTestingService.insert_choice(choice_id, qt_id, this.asr_id).subscribe((res) => {
       console.log(res);
-      if (res = 'insert') {
+      if (res == 'insert') {
         this.count_insert--;
       }
       this.check_question()
