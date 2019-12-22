@@ -20,15 +20,18 @@
                             วิชา
                             <ion-text color="danger">*</ion-text>
                         </ion-label>
-                        <ion-select placeholder="โปรดเลือก" name="crsId" [(ngModel)]="crsId" >
-                            <ion-select-option style="font-family: 'Prompt', sans-serif;" *ngFor="let rs_subject of rs_subject;let i = index"
-                                [value]="rs_subject.crsId">{{rs_subject.crsName}}
+                        <ion-select placeholder="โปรดเลือก" name="crsId" [(ngModel)]="crsId">
+                            <ion-select-option style="font-family: 'Prompt', sans-serif;"
+                                *ngFor="let rs_subject of rs_subject;let i = index" [value]="rs_subject.crsId">
+                                {{rs_subject.crsName}}
                             </ion-select-option>
                         </ion-select>
                     </ion-row>
                 </ion-grid>
             </ion-item>
-            <ion-item>
+
+            <!-- year -->
+            <!-- <ion-item>
                 <ion-grid>
                     <ion-row>
                         <ion-label align-self-center>
@@ -41,8 +44,10 @@
                         </ion-select>
                     </ion-row>
                 </ion-grid>
-            </ion-item>
-            <ion-item>
+            </ion-item> -->
+
+            <!-- term -->
+            <!-- <ion-item>
                 <ion-grid>
                     <ion-row>
 
@@ -57,7 +62,8 @@
                         </ion-select>
                     </ion-row>
                 </ion-grid>
-            </ion-item>
+            </ion-item> -->
+
             <ion-row>
                 <ion-col>
                     <ion-button (click)="show_result_exam_student()" color="primary" float-right>ค้นหา</ion-button>
@@ -66,12 +72,13 @@
         </ion-list>
     </ion-card>
 
-    <ion-card class="bg-gradient-purple">
+    <ion-card *ngIf="hide" class="bg-gradient-purple">
         <ion-card-header>
             <h3>ผลการสอบ</h3>
         </ion-card-header>
         <ion-item>
             <ion-grid>
+
                 <ion-row class="ion-text-center">
                     <ion-col>
                         <h5>ชื่อชุดข้อสอบ</h5>
@@ -80,7 +87,9 @@
                         <h5>คะแนน</h5>
                     </ion-col>
                 </ion-row>
-                <ion-row class="ion-text-center" *ngFor="let rs_result_exam_student of rs_result_exam_student;let i = index">
+
+                <ion-row class="ion-text-center"
+                    *ngFor="let rs_result_exam_student of rs_result_exam_student;let i = index">
                     <ion-col>
                         <ion-label>{{rs_result_exam_student.ib_name}}</ion-label>
                     </ion-col>
@@ -95,8 +104,15 @@
                         <!-- สิ้นสุดแสดงคะแนน -->
                     </ion-col>
                 </ion-row>
+
             </ion-grid>
         </ion-item>
     </ion-card>
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar class="bg-toolbar">
+        <ion-title style="font-size: 15px;" text-center="text-center">create by Team 2</ion-title>
+    </ion-toolbar>
+</ion-footer>
