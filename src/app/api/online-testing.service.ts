@@ -10,6 +10,10 @@ export class OnlineTestingService {
 
   }
 
+  get_student(stuId: any) {
+    return this.http.get('https://10.80.39.17/TSP60/Thepd-nu/index.php/oes/API/Api_online_testing/get_student/' + stuId).pipe(map(res => res.json()));
+  }
+
   get_subject() {
     return this.http.get('https://10.80.39.17/TSP60/Thepd-nu/index.php/oes/API/Api_online_testing/get_subject_name').pipe(map(res => res.json()));
   }

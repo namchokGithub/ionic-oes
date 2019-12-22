@@ -12,6 +12,7 @@ import { ToastController } from '@ionic/angular';
 export class HomePage {
 
   private username : string = "";
+  private password : string = "";
 
   constructor(private menuCtrl: MenuController, private loadingController: LoadingController, private navCtrl: NavController,public toastController: ToastController) { }
   
@@ -20,14 +21,28 @@ export class HomePage {
   }
 
   validate(){
-    if(this.username!=""){
+    if(this.username!="" && this.password!=""){
       this.login()
     }else{
-      this.presentToast()
+
+      if(this.username=="")
+        this.checkLogin()
+      else
+        this.checkPassword()
     }
   }
 
-  async presentToast() {
+  async checkPassword() {
+    const toast =  await this.toastController.create({
+      message: 'กรุณาใส่รหัสผ่าน',
+      duration: 3000,
+      position: 'bottom',
+      showCloseButton: true
+    });
+    toast.present();
+  }
+
+  async checkLogin() {
     const toast =  await this.toastController.create({
       message: 'กรุณาใส่ชื่อผู้ใช้',
       duration: 3000,
@@ -49,7 +64,8 @@ export class HomePage {
       res.onDidDismiss().then((dis) => {
         let navigationExtras: NavigationExtras = {
           state: {
-            username: this.username
+            username: this.username,
+            password: this.password
           }
         };
         this.navCtrl.navigateRoot(['/menu'], navigationExtras)
