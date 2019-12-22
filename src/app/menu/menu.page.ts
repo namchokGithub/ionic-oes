@@ -10,7 +10,8 @@ import { ActivatedRoute, Router} from '@angular/router';
 })
 export class MenuPage implements OnInit {
 
-  private username : string;
+  private username : string = "Name";
+  private site_img : string = "";
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
@@ -21,6 +22,11 @@ export class MenuPage implements OnInit {
   }
 
   ngOnInit() {
+    if(this.username.length==8){
+      this.site_img = "https://reg.buu.ac.th/registrar/getstudentimage.asp?id="+this.username
+    }else{
+      this.site_img = "https://image.flaticon.com/icons/svg/145/145849.svg"
+    }
   }
 
 

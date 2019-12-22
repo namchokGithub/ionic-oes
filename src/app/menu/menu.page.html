@@ -9,12 +9,18 @@
 
 <ion-content class="bg">
 
-    <ion-chip class="m-3 mb-0 bg-light-blue ">
-        <ion-avatar>
-            <img src="https://image.flaticon.com/icons/svg/145/145849.svg">
-        </ion-avatar>
-        <ion-label>สวัสดีคุณ {{username}}</ion-label>
-    </ion-chip>
+    <ion-card id="card-info">
+        <ion-card-header>
+            <ion-row>
+                <ion-col size="4"> 
+                    <img src="{{site_img}}" class="profile-photo">
+                </ion-col>
+                <ion-col>
+                    <h3 class="ml-3 text-card-info">สวัสดี {{username}}</h3>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+    </ion-card>
 
     <!-- เมนูทำข้อสอบออนไลน์ -->
     <ion-card id="online-testing" routerLink="/list-testing" class="mt-0">
