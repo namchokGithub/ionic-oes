@@ -92,22 +92,28 @@ export class HomePage {
   settingUser(){
         // Namchok edit
         if (this.username.length == 8) {
-          this.OnlineTestingService.get_student(this.username).subscribe(res => {
+          this.OnlineTestingService.get_student(this.username).subscribe((res) => {
             // Set image
             this.site =
               "https://reg.buu.ac.th/registrar/getstudentimage.asp?id=" +
               this.username;
+
+            if(res==null)
+            {
+              this.name = this.username;
+            }
+            else
             this.name = res.name;
 
             this.menuService.set_name(this.name);
             this.menuService.set_site_img(this.site);
-          });
+          }  , (err) => {console.log("Error " + err)} );
         } else {
 
           this.name = this.username;
           this.site = "https://image.flaticon.com/icons/svg/145/145849.svg";
     
-          this.menuService.set_name(name);
+          this.menuService.set_name(this.name);
           this.menuService.set_site_img(this.site);
         }
         // console.log(this.menuService.get_site_img());

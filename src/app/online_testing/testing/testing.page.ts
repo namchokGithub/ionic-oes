@@ -31,7 +31,7 @@ export class TestingPage implements OnInit {
   constructor(private menuCtrl: MenuController, private loadingController: LoadingController, public navCtrl: NavController, public alertController: AlertController, public activatedRoute: ActivatedRoute, public OnlineTestingService: OnlineTestingService, public router: Router, public actionSheetController: ActionSheetController) {
     this.activatedRoute.queryParams.subscribe((res) => {
       this.asg_id = res.asg_id
-      this.show_button = false
+      this.show_button = true
       this.count_insert = 0
     });
   }
