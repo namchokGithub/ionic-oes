@@ -68,6 +68,7 @@ export class HomePage {
   async login() {
 
     this.settingUser()
+
     const loading = await this.loadingController
       .create({
         spinner: "lines",
@@ -97,18 +98,20 @@ export class HomePage {
               "https://reg.buu.ac.th/registrar/getstudentimage.asp?id=" +
               this.username;
             this.name = res.name;
+
             this.menuService.set_name(this.name);
             this.menuService.set_site_img(this.site);
           });
         } else {
+
           this.name = this.username;
           this.site = "https://image.flaticon.com/icons/svg/145/145849.svg";
     
           this.menuService.set_name(name);
           this.menuService.set_site_img(this.site);
         }
-        console.log(this.menuService.get_site_img());
-        console.log(this.menuService.get_name());
+        // console.log(this.menuService.get_site_img());
+        // console.log(this.menuService.get_name());
   }
 
 }
