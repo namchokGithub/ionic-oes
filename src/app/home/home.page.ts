@@ -120,6 +120,22 @@ export class HomePage {
         // console.log(this.menuService.get_name());
   }
 
+  async register() {
+    const loading = await this.loadingController
+    .create({
+      spinner: "lines",
+      duration: 50,
+      message: "รอสักครู่...",
+      translucent: true
+    })
+    .then(res => {
+      res.present();
+      res.onDidDismiss().then(dis => {
+        this.navCtrl.navigateRoot(["/regis"]);
+      });
+    });
+  }
+
 }
 
 
