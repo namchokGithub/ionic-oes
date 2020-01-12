@@ -1,39 +1,38 @@
-import { Component } from '@angular/core';
-import { Platform, LoadingController, NavController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { MenuService } from './api/menu.service';
+import { Component } from "@angular/core";
+import { Platform, LoadingController, NavController } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { MenuService } from "./api/menu.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"]
 })
 export class AppComponent {
-
-  private name : string = "Name";
-  private site_img : string = "";
+  private name: string = "Name";
+  private site_img: string = "";
 
   public appPages = [
     {
-      title: 'หน้าแรก',
-      url: '/menu',
-      icon: 'home'
+      title: "หน้าแรก",
+      url: "/menu",
+      icon: "home"
     },
     {
-      title: 'ทำข้อสอบออนไลน์',
-      url: '/list-testing',
-      icon: 'book'
+      title: "ทำข้อสอบออนไลน์",
+      url: "/list-testing",
+      icon: "book"
     },
     {
-      title: 'ผลการสอบ',
-      url: '/review-student',
-      icon: 'clipboard'
+      title: "ผลการสอบ",
+      url: "/review-student",
+      icon: "clipboard"
     },
     {
-      title: 'ออกจากระบบ',
-      url: '/home',
-      icon: 'unlock'
+      title: "ออกจากระบบ",
+      url: "/home",
+      icon: "unlock"
     }
   ];
 
@@ -45,7 +44,7 @@ export class AppComponent {
     private navCtrl: NavController,
     private menuService: MenuService
   ) {
-    this.loadName()
+    this.loadName();
     this.initializeApp();
   }
 
@@ -57,7 +56,60 @@ export class AppComponent {
   }
 
   loadName() {
-    this.name = this.menuService.get_name()
-    this.site_img = this.menuService.get_site_img()
+    this.name = this.menuService.get_name();
+    this.site_img = this.menuService.get_site_img();
+
+    if (
+      this.name == "Admin" ||
+      this.name == "admin" ||
+      this.name == "ADMIN" ||
+      this.name == "ad"
+    ) {
+      this.appPages = [
+        {
+          title: "หน้าแรก",
+          url: "/menu",
+          icon: "home"
+        },
+        {
+          title: "จัดกาารชุดข้อสอบ",
+          url: "/admin",
+          icon: "create"
+        },
+        {
+          title: "ผลการสอบ",
+          url: "/review-student",
+          icon: "clipboard"
+        },
+        {
+          title: "ออกจากระบบ",
+          url: "/home",
+          icon: "unlock"
+        }
+      ];
+    } else {
+      this.appPages = [
+        {
+          title: "หน้าแรก",
+          url: "/menu",
+          icon: "home"
+        },
+        {
+          title: "ทำข้อสอบออนไลน์",
+          url: "/list-testing",
+          icon: "book"
+        },
+        {
+          title: "ผลการสอบ",
+          url: "/review-student",
+          icon: "clipboard"
+        },
+        {
+          title: "ออกจากระบบ",
+          url: "/home",
+          icon: "unlock"
+        }
+      ];
+    }
   }
 }

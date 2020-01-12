@@ -39,14 +39,12 @@ export class HomePage {
     this.name = this.menuService.get_name();
 
     this.route.queryParams.subscribe(params => {
-
       // Load password
 
       if (this.router.getCurrentNavigation().extras.state) {
         this.username = this.router.getCurrentNavigation().extras.state.username;
       }
     });
-
   }
 
   validate() {
@@ -83,8 +81,7 @@ export class HomePage {
   }
 
   async login() {
-
-    this.settingUser()
+    this.settingUser();
 
     const loading = await this.loadingController
       .create({
@@ -96,63 +93,70 @@ export class HomePage {
       .then(res => {
         res.present();
         res.onDidDismiss().then(dis => {
-          let navigationExtras: NavigationExtras = {
-            state: {
-              name: this.name
-            }
-          };
-          this.navCtrl.navigateRoot(["/menu"], navigationExtras);
+          if (
+            this.username == "Admin" ||
+            this.username == "admin" ||
+            this.username == "ADMIN" ||
+            this.username == "ad"
+          ) {
+            this.navCtrl.navigateRoot(["/admin"]);
+          } else {
+            let navigationExtras: NavigationExtras = {
+              state: {
+                name: this.name
+              }
+            };
+            this.navCtrl.navigateRoot(["/menu"], navigationExtras);
+          }
         });
       });
   }
-  
-  settingUser(){
-        // Namchok edit
-        if (this.username.length == 8) {
-          this.OnlineTestingService.get_student(this.username).subscribe((res) => {
-            // Set image
-            this.site =
-              "https://reg.buu.ac.th/registrar/getstudentimage.asp?id=" +
-              this.username;
 
-            if(res==null)
-            {
-              this.name = this.username;
-            }
-            else
-            this.name = res.name;
+  settingUser() {
+    // Namchok edit
+    if (this.username.length == 8) {
+      this.OnlineTestingService.get_student(this.username).subscribe(
+        res => {
+          // Set image
+          this.site =
+            "https://reg.buu.ac.th/registrar/getstudentimage.asp?id=" +
+            this.username;
 
-            this.menuService.set_name(this.name);
-            this.menuService.set_site_img(this.site);
-          }  , (err) => {console.log("Error " + err)} );
-        } else {
+          if (res == null) {
+            this.name = this.username;
+          } else this.name = res.name;
 
-          this.name = this.username;
-          this.site = "https://image.flaticon.com/icons/svg/145/145849.svg";
-    
           this.menuService.set_name(this.name);
           this.menuService.set_site_img(this.site);
+        },
+        err => {
+          console.log("Error " + err);
         }
-        // console.log(this.menuService.get_site_img());
-        // console.log(this.menuService.get_name());
+      );
+    } else {
+      this.name = this.username;
+      this.site = "https://image.flaticon.com/icons/svg/145/145849.svg";
+
+      this.menuService.set_name(this.name);
+      this.menuService.set_site_img(this.site);
+    }
+    // console.log(this.menuService.get_site_img());
+    // console.log(this.menuService.get_name());
   }
 
   async register() {
     const loading = await this.loadingController
-    .create({
-      spinner: "lines",
-      duration: 50,
-      message: "รอสักครู่...",
-      translucent: true
-    })
-    .then(res => {
-      res.present();
-      res.onDidDismiss().then(dis => {
-        this.navCtrl.navigateRoot(["/regis"]);
+      .create({
+        spinner: "lines",
+        duration: 50,
+        message: "รอสักครู่...",
+        translucent: true
+      })
+      .then(res => {
+        res.present();
+        res.onDidDismiss().then(dis => {
+          this.navCtrl.navigateRoot(["/regis"]);
+        });
       });
-    });
   }
-
 }
-
-

@@ -12,7 +12,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class MenuPage implements OnInit {
 
-  private name: string = "Name";
+  private name: string = "ชื่อผู้ใช้งาน";
+  public menuAdmin: boolean = false;
+  public menuTest: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +34,15 @@ export class MenuPage implements OnInit {
 
   ionViewWillEnter(){
     this.name = this.menuService.get_name()
+    if (
+      this.name == "Admin" ||
+      this.name == "admin" ||
+      this.name == "ADMIN" ||
+      this.name == "ad"
+    ) {
+      this.menuTest = false;
+      this.menuAdmin = true;
+    }
   }
   
 }

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar class="bg-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ผู้ดูแลระบบ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+  <ion-card class="bg-gradient-purple">
+    <ion-card-header>
+      <h3>ค้นหารายการวิชาทั้งหมด</h3>
+    </ion-card-header>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-label align-self-center style="font-family: 'Prompt', sans-serif;">
+              วิชา
+              <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-select placeholder="โปรดเลือก" name="crsId" [(ngModel)]="crsId">
+              <ion-select-option style="font-family: 'Prompt', sans-serif;"
+                *ngFor="let rs_subject of rs_subject;let i = index" [value]="rs_subject.crsId">
+                {{rs_subject.crsName}}
+              </ion-select-option>
+            </ion-select>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="searchSubject()" color="primary" float-right>ค้นหา</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-card>
+</ion-content>

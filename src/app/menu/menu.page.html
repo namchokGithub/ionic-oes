@@ -17,15 +17,11 @@
     </div>
 
     <!-- เมนูทำข้อสอบออนไลน์ -->
-    <ion-card id="online-testing" routerLink="/list-testing" class="mt-0">
+    <ion-card *ngIf="menuTest" id="online-testing" routerLink="/list-testing" class="mt-0">
         <ion-card-header>
             <ion-card-subtitle class="text-white">นักเรียน</ion-card-subtitle>
             <ion-card-title class="text-white">ทำข้อสอบออนไลน์</ion-card-title>
         </ion-card-header>
-
-        <ion-card-content>
-
-        </ion-card-content>
     </ion-card>
     <!-- สิ้นสุดเมนูทำข้อสอบออนไลน์ -->
 
@@ -35,10 +31,15 @@
             <ion-card-subtitle class="text-white">นักเรียน</ion-card-subtitle>
             <ion-card-title class="text-white">แสดงผลการสอบ</ion-card-title>
         </ion-card-header>
-
-        <ion-card-content>
-
-        </ion-card-content>
     </ion-card>
     <!-- เมนูแสดงผลการสอบ -->
+
+    <!-- จัดการชุดข้อสอบ -->
+    <ion-card *ngIf="menuAdmin" id="admin" routerLink="/admin">
+        <ion-card-header>
+            <ion-card-subtitle class="text-white">ผู้ดูแลระบบ</ion-card-subtitle>
+            <ion-card-title class="text-white">จัดการชุดข้อสอบ</ion-card-title>
+        </ion-card-header>
+    </ion-card>
+    <!-- จัดการชุดข้อสอบ -->
 </ion-content>

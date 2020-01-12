@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class MenuService {
 
-  private name : string = "Name";
+  private name : string = "ชื่อผู้ใช้งาน";
   private site_img : string = "https://image.flaticon.com/icons/svg/145/145849.svg";
 
   constructor() { }
