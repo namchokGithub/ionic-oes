@@ -25,4 +25,5 @@ export class MenuService {
   set_site_img(site: any){
     this.site_img = site
   }
+  
 }
