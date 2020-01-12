@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, NavigationExtras } from "@angular/router";
+import { Router, NavigationExtras, ActivatedRoute } from "@angular/router";
 import {
   MenuController,
   LoadingController,
@@ -17,10 +17,13 @@ import { MenuService } from "src/app/api/menu.service";
 export class HomePage {
   private username: string = "";
   private password: string = "";
+  private checkPass: string = "";
   private name: string = "";
   private site: string = "";
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private menuCtrl: MenuController,
     private loadingController: LoadingController,
     private navCtrl: NavController,
@@ -34,6 +37,16 @@ export class HomePage {
 
     this.site = this.menuService.get_site_img();
     this.name = this.menuService.get_name();
+
+    this.route.queryParams.subscribe(params => {
+
+      // Load password
+
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.username = this.router.getCurrentNavigation().extras.state.username;
+      }
+    });
+
   }
 
   validate() {
@@ -41,11 +54,11 @@ export class HomePage {
       this.login();
     } else {
       if (this.username == "") this.checkLogin();
-      else this.checkPassword();
+      else this.validatePass();
     }
   }
 
-  async checkPassword() {
+  async validatePass() {
     const toast = await this.toastController.create({
       message: "กรุณาใส่รหัสผ่าน",
       duration: 3000,
@@ -53,6 +66,10 @@ export class HomePage {
       showCloseButton: true
     });
     toast.present();
+  }
+
+  checkPassword() {
+    // load pass word with username
   }
 
   async checkLogin() {
