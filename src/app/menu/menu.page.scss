@@ -6,6 +6,14 @@
   --background: #c9e5f1 !important;
 }
 
+.bg2 {
+  --background: #faf1ff !important;
+}
+
+.bg-toolbar2 {
+  --background: #f6e2ff !important;
+}
+
 #online-testing {
   --background: linear-gradient(to bottom right, #3366ff 0%, #6699ff 55%);
 }
@@ -15,6 +23,10 @@
 }
 
 #review {
+  background: linear-gradient(to top left, #cc33ff 0%, #cc0099 55%);
+}
+
+#user {
   background: linear-gradient(to top left, #cc33ff 0%, #cc0099 55%);
 }
 

@@ -93,21 +93,12 @@ export class HomePage {
       .then(res => {
         res.present();
         res.onDidDismiss().then(dis => {
-          if (
-            this.username == "Admin" ||
-            this.username == "admin" ||
-            this.username == "ADMIN" ||
-            this.username == "ad"
-          ) {
-            this.navCtrl.navigateRoot(["/admin"]);
-          } else {
-            let navigationExtras: NavigationExtras = {
-              state: {
-                name: this.name
-              }
-            };
-            this.navCtrl.navigateRoot(["/menu"], navigationExtras);
-          }
+          let navigationExtras: NavigationExtras = {
+            state: {
+              name: this.name
+            }
+          };
+          this.navCtrl.navigateRoot(["/menu"], navigationExtras);
         });
       });
   }
