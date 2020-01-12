@@ -12,6 +12,7 @@ import { MenuService } from "./api/menu.service";
 export class AppComponent {
   private name: string = "Name";
   private site_img: string = "";
+  public active: boolean = true
 
   public appPages = [
     {
@@ -65,6 +66,7 @@ export class AppComponent {
       this.name == "ADMIN" ||
       this.name == "ad"
     ) {
+      this.active = false
       this.appPages = [
         {
           title: "หน้าแรก",
@@ -72,9 +74,14 @@ export class AppComponent {
           icon: "home"
         },
         {
-          title: "จัดกาารชุดข้อสอบ",
+          title: "จัดการชุดข้อสอบ",
           url: "/admin",
           icon: "create"
+        },
+        {
+          title: "จัดการบัญชีผู้ใช้",
+          url: "/admin",
+          icon: "contacts"
         },
         {
           title: "ผลการสอบ",
@@ -88,6 +95,7 @@ export class AppComponent {
         }
       ];
     } else {
+      this.active = true
       this.appPages = [
         {
           title: "หน้าแรก",
