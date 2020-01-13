@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { NavController, AlertController, ToastController } from "@ionic/angular";
+import {
+  NavController,
+  AlertController,
+  ToastController
+} from "@ionic/angular";
 import { NavigationExtras } from "@angular/router";
+import { MenuService } from "../../api/menu.service";
 
 @Component({
   selector: "app-regis",
@@ -9,13 +14,15 @@ import { NavigationExtras } from "@angular/router";
 })
 export class RegisPage implements OnInit {
   private name: string = "";
+  private lastName: string = "";
   private username: string = "";
   private password: string = "";
 
   constructor(
     private navCtrl: NavController,
     public alertController: AlertController,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private menuService: MenuService
   ) {}
 
   ngOnInit() {}
@@ -66,7 +73,6 @@ export class RegisPage implements OnInit {
 
   // Send username
   async regis() {
-
     const alert = await this.alertController.create({
       header: "ยืนยันการสมัคร",
       // message: "ยืนยันการสมัคร",
@@ -82,6 +88,12 @@ export class RegisPage implements OnInit {
         {
           text: "ยืนยัน",
           handler: () => {
+            this.menuService
+              .insert(this.name, this.lastName, this.username, this.password)
+              .subscribe(response => {
+                console.log("insert success");
+              });
+
             let navigationExtras: NavigationExtras = {
               state: {
                 username: this.username

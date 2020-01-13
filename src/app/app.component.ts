@@ -80,7 +80,7 @@ export class AppComponent {
         },
         {
           title: "จัดการบัญชีผู้ใช้",
-          url: "/admin",
+          url: "/user",
           icon: "contacts"
         },
         {

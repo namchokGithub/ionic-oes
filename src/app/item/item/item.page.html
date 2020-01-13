@@ -9,44 +9,51 @@
 
 <ion-content class="bg">
 
-  <ion-card padding class="bg-gradient-blue">
+  <ion-card style="background-color: white;">
 
-    <ion-card-header>
-      <ion-icon name="add-circle-outline"></ion-icon>
-      <ion-label>
-        เพิ่มชุดข้อสอบ
-      </ion-label>
+    <ion-card-header class="bg-gradient-purple">
+      <h3>
+        <ion-icon name="add-circle-outline"></ion-icon> เพิ่มชุดข้อสอบ
+      </h3>
     </ion-card-header>
 
     <!-- Item -->
-    <div padding>
+    <ion-item>
+      <ion-label position="floating">
+        ชื่อชุดข้อสอบ
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="nameItem" placeholder=""></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label position="floating">
-          ชื่อ-นามสกุล
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="a" placeholder=""></ion-input>
-      </ion-item>
+    <ion-item style="border-radius: 5px; margin-top: 5px;">
+      <ion-label position="floating">
+        จำนวนคำถาม
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="numberOfQues" placeholder=""></ion-input>
+    </ion-item>
 
-      <ion-item style="border-radius: 5px; margin-top: 5px;">
-        <ion-label position="floating">
-          ชื่อผู้ใช้งาน
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="b" placeholder=""></ion-input>
-      </ion-item>
-
-      <ion-item style="border-radius: 5px; margin-top: 5px;">
-        <ion-label position="floating">
-          รหัสผ่าน
-        </ion-label>
-        <ion-input type="password" [(ngModel)]="c" placeholder=""></ion-input>
-      </ion-item>
-
-    </div>
     <!-- end Item -->
 
   </ion-card>
 
+  <ion-card style="background-color: white;">
 
+    <ion-card-header class="bg-gradient-purple">
+      <h3>
+        <ion-icon name="basket"></ion-icon> เลือกคำถาม
+      </h3>
+    </ion-card-header>
+
+    <ion-item>
+      <ion-label position="floating">
+        ชุดคำถาม
+      </ion-label>
+      <ion-select placeholder="โปรดเลือก">
+        <ion- option>
+          1
+        </ion-  option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
 
 </ion-content>
