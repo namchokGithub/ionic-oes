@@ -42,11 +42,12 @@ export class DetailTestingPage implements OnInit {
   set_data() {
     this.OnlineTestingService.get_detail_testing(this.asg_id).subscribe((response) => {
       console.log(response)
-      this.code_name = response.qu_detail_testing['course_code']
-      this.course_name = response.qu_detail_testing['course_name']
-      this.course_description = response.qu_detail_testing['course_description']
-      this.amount_testing = response.qu_detail_testing['amount_testing']
-      this.time = response.qu_detail_testing['time_testing']
+      // console.log(response.qu_detail_testing)
+      this.code_name = response[0].course_code
+      this.course_name = response[0]['course_name']
+      this.course_description = response[0]['course_description']
+      this.amount_testing = response[0]['amount_testing']
+      this.time = response[0]['time_testing']
     });
   }
 
