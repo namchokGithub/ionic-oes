@@ -16,6 +16,7 @@ export class MenuPage implements OnInit {
   public menuAdmin: boolean = false;
   public menuTest: boolean = true;
 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -33,15 +34,10 @@ export class MenuPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    this.name = this.menuService.get_name()
-    if (
-      this.name == "Admin" ||
-      this.name == "admin" ||
-      this.name == "ADMIN" ||
-      this.name == "ad"
-    ) {
-      this.menuTest = false;
-      this.menuAdmin = true;
+    if (this.menuService.getStatus()) {
+      this.menuAdmin = true
+    }else{
+      this.menuAdmin = false
     }
   }
   

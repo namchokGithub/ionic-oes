@@ -8,9 +8,22 @@ import { Http } from '@angular/http';
 export class MenuService {
 
   private name : string = "";
+  private statusAdmin : boolean = false
   private site_img : string = "https://image.flaticon.com/icons/svg/145/145849.svg";
 
   constructor(private http: Http) { }
+
+  getStatus() {
+    return this.statusAdmin
+  }
+
+  asAdmin() {
+    this.statusAdmin = true
+  }
+
+  asStudent() {
+    this.statusAdmin = false
+  }
 
   get_name(){
     return this.name

@@ -12,7 +12,7 @@ import { MenuService } from "./api/menu.service";
 export class AppComponent {
   private name: string = "Name";
   private site_img: string = "";
-  public active: boolean = true
+  public active: boolean = true;
 
   public appPages = [
     {
@@ -60,13 +60,8 @@ export class AppComponent {
     this.name = this.menuService.get_name();
     this.site_img = this.menuService.get_site_img();
 
-    if (
-      this.name == "Admin" ||
-      this.name == "admin" ||
-      this.name == "ADMIN" ||
-      this.name == "ad"
-    ) {
-      this.active = false
+    if (this.menuService.getStatus()) {
+      this.active = false;
       this.appPages = [
         {
           title: "หน้าแรก",
@@ -95,7 +90,7 @@ export class AppComponent {
         }
       ];
     } else {
-      this.active = true
+      this.active = true;
       this.appPages = [
         {
           title: "หน้าแรก",

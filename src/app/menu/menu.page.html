@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar [ngClass]="{'bg-toolbar': menuTest === true, 'bg-toolbar2': menuTest === false}">
+    <ion-toolbar [ngClass]="{'bg-toolbar': menuAdmin === false, 'bg-toolbar2': menuAdmin === true}">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content [ngClass]="{'bg': menuTest === true, 'bg2': menuTest === false}">
+<ion-content [ngClass]="{'bg': menuAdmin === false, 'bg2': menuAdmin === true}">
 
     <div class="row mt-2 ml-2 mb-1">
         <ion-chip outline color="dark">
@@ -17,7 +17,7 @@
     </div>
 
     <!-- เมนูทำข้อสอบออนไลน์ -->
-    <ion-card *ngIf="menuTest" id="online-testing" routerLink="/list-testing" class="mt-0">
+    <ion-card *ngIf="!menuAdmin" id="online-testing" routerLink="/list-testing" class="mt-0">
         <ion-card-header>
             <ion-card-subtitle class="text-white">นักเรียน</ion-card-subtitle>
             <ion-card-title class="text-white">ทำข้อสอบออนไลน์</ion-card-title>
@@ -26,7 +26,7 @@
     <!-- สิ้นสุดเมนูทำข้อสอบออนไลน์ -->
 
     <!-- เมนูแสดงผลการสอบ -->
-    <ion-card *ngIf="menuTest" id="review" routerLink="/review-student">
+    <ion-card *ngIf="!menuAdmin" id="review" routerLink="/review-student">
         <ion-card-header>
             <ion-card-subtitle class="text-white">นักเรียน</ion-card-subtitle>
             <ion-card-title class="text-white">แสดงผลการสอบ</ion-card-title>

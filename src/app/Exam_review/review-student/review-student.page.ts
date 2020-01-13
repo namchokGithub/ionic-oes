@@ -34,7 +34,8 @@ export class ReviewStudentPage implements OnInit {
 
   get_subject() {
     this.ReviewTestingService.get_subject().subscribe(result => {
-      this.rs_subject = result.rs_subject;
+      console.log(result)
+      this.rs_subject = result;
       this.rs_year = result.rs_year;
     });
   }

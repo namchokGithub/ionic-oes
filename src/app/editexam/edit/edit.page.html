@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar class="bg-toolbar">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>จัดการชุดข้อสอบ</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+
+    <ion-card style="background-color: white;">
+
+        <ion-card-header class="bg-gradient-purple">
+            <h3>
+                <ion-icon name="albums"></ion-icon> แก้ไขชุดข้อสอบ
+            </h3>
+        </ion-card-header>
+
+        <!-- Item -->
+        <ion-list lines="none">
+            <ion-item>
+                <ion-label position="floating">
+                    ชื่อชุดข้อสอบ
+                </ion-label>
+                <ion-input type="text" [(ngModel)]="ib_name" placeholder=""></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">
+                    จำนวนคำถาม
+                </ion-label>
+                <ion-input type="number" [(ngModel)]="ib_stem_amount" placeholder=""></ion-input>
+            </ion-item>
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="cancle_Exam()" color="danger" float-left>ยกเลิก</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button (click)="edit_Exam()" color="success" float-right>ยืนยัน</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+
+        <!-- end Item -->
+    </ion-card>
+</ion-content>

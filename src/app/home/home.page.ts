@@ -8,6 +8,7 @@ import {
 import { ToastController } from "@ionic/angular";
 import { OnlineTestingService } from "src/app/api/online-testing.service";
 import { MenuService } from "src/app/api/menu.service";
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: "app-home",
@@ -20,6 +21,8 @@ export class HomePage {
   private checkPass: string = "";
   private name: string = "";
   private site: string = "";
+  private status: boolean;
+  private allUser: []
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +32,8 @@ export class HomePage {
     private navCtrl: NavController,
     public toastController: ToastController,
     public OnlineTestingService: OnlineTestingService,
-    private menuService: MenuService
+    private menuService: MenuService,
+    public alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -37,6 +41,10 @@ export class HomePage {
 
     this.site = this.menuService.get_site_img();
     this.name = this.menuService.get_name();
+    this.menuService.getAllUser().subscribe((response) => {
+      console.log(response)
+      this.allUser = response
+    });
 
     this.route.queryParams.subscribe(params => {
       // Load password
@@ -47,9 +55,37 @@ export class HomePage {
     });
   }
 
-  validate() {
+  async validate() {
+    let check: Boolean = true
+
     if (this.username != "" && this.password != "") {
-      this.login();
+
+      for(let i=0;i<this.allUser.length;i++) {
+        if(this.username==this.allUser[i].user_id && this.username==this.allUser[i].user_password){
+          this.name = this.allUser[i].user_firstname + " " + this.allUser[i].user_lastname
+          check = false
+
+          if(this.allUser[i].type===2){
+            this.menuService.asAdmin()
+            console.log(this.menuService.getStatus())
+          }else {
+            this.menuService.asStudent()
+            console.log(this.menuService.getStatus())
+          }
+          this.login();
+        }
+      }
+
+      if(check){
+        const alert = await this.alertController.create({
+          header: 'แจ้งเตือน',
+          message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
+          buttons: ['ตกลง']
+        });
+    
+        await alert.present();
+      }
+      
     } else {
       if (this.username == "") this.checkLogin();
       else this.validatePass();
@@ -125,7 +161,7 @@ export class HomePage {
         }
       );
     } else {
-      this.name = this.username;
+
       this.site = "https://image.flaticon.com/icons/svg/145/145849.svg";
 
       this.menuService.set_name(this.name);
