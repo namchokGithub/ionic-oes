@@ -88,10 +88,11 @@ export class RegisPage implements OnInit {
         {
           text: "ยืนยัน",
           handler: () => {
+
             this.menuService
               .insert(this.name, this.lastName, this.username, this.password)
               .subscribe(response => {
-                console.log("insert success");
+                console.log("Insert success");
               });
 
             let navigationExtras: NavigationExtras = {

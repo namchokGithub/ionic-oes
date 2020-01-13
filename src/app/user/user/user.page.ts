@@ -1,34 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { Component, OnInit } from "@angular/core";
+import { AlertController, NavController } from "@ionic/angular";
+import { MenuService } from 'src/app/api/menu.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.page.html',
-  styleUrls: ['./user.page.scss'],
+  selector: "app-user",
+  templateUrl: "./user.page.html",
+  styleUrls: ["./user.page.scss"]
 })
 export class UserPage implements OnInit {
+  public rs_user
 
-  public rs_user = [
-    {
-      name: "Namchok",
-      id: 12
-    },
-    {
-      name: "Namchok2",
-      id: 2
-    },
-    {
-      name: "Namchok3",
-      id: 3
-    }
-  ]
-
-  constructor(private navCtrl: NavController, public alertController: AlertController) { }
+  constructor(
+    private navCtrl: NavController,
+    public alertController: AlertController,
+    private menuService: MenuService
+  ) {}
 
   ngOnInit() {
+    this.menuService.getAllUser().subscribe(response => {
+      console.log(response)
+      this.rs_user = response;
+    });
+    
   }
 
-  async delete(id){
+  async delete(id) {
     const alert = await this.alertController.create({
       header: "ต้องการลบบัญชีหรือไม่ ?",
       // message: "ยืนยันการสมัคร",
@@ -46,7 +42,18 @@ export class UserPage implements OnInit {
           role: "submit",
           cssClass: "secondary",
           handler: () => {
-            
+
+            for( var i = 0; i < this.rs_user.length; i++){ 
+              if ( this.rs_user[i].id === id) {
+                this.rs_user.splice(i, 1); 
+              }
+           }
+
+            this.menuService
+              .delete(id)
+              .subscribe(response => {
+                console.log("Delete success");
+              });
           }
         }
       ]

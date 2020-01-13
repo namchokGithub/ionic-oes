@@ -7,7 +7,7 @@ import { Http } from '@angular/http';
 })
 export class MenuService {
 
-  private name : string = "ชื่อผู้ใช้งาน";
+  private name : string = "";
   private site_img : string = "https://image.flaticon.com/icons/svg/145/145849.svg";
 
   constructor(private http: Http) { }
@@ -28,8 +28,16 @@ export class MenuService {
     this.site_img = site
   }
 
-  insert(name: string, lastName: string, username: string, password: string){
-    return this.http.get('http://localhost:3000/insert_user').pipe(map(res => res.json()))
+  insert(fname: string, lastName: string, username: string, password: string){
+    return this.http.get('http://localhost:3000/user/insert_user/'+username+'/'+password+'/'+fname+'/'+lastName+'/'+1).pipe(map(res => res.json()))
+  }
+
+  delete(id: number) {
+    return this.http.get('http://localhost:3000/user/delete_information_user/'+id).pipe(map(res => res.json()))
+  }
+
+  getAllUser() {
+    return this.http.get('http://localhost:3000/user/get_user_all').pipe(map(res => res.json()))
   }
   
 }

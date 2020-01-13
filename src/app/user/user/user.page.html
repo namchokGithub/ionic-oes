@@ -18,7 +18,7 @@
         <ion-row class="ion-text-center" *ngFor="let Rs_user of rs_user; let i = index">
           <ion-item-sliding>
             <ion-item lines="none">
-              <ion-label>{{Rs_user.name}}</ion-label>
+              <ion-label>{{Rs_user.user_firstname + " " + Rs_user.user_lastname}}</ion-label>
             </ion-item>
 
             <ion-item-options lines="none">
