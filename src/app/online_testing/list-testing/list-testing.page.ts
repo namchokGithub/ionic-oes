@@ -25,13 +25,13 @@ export class ListTestingPage implements OnInit {
   ngOnInit() {}
 
   get_subject() {
-    this.OnlineTestingService.get_subject().subscribe(response => {
+    this.OnlineTestingService.get_subject_name().subscribe(response => {
       this.subject = response;
     });
   }
 
   get_testing() {
-    this.OnlineTestingService.getTesting().subscribe(response => {
+    this.OnlineTestingService.get_list_testing().subscribe(response => {
       this.listtest = response;
     });
   }

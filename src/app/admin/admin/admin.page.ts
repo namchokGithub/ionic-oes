@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin',
@@ -16,7 +16,7 @@ export class AdminPage implements OnInit {
 
   private hide = false;
 
-  constructor(public alertController: AlertController) { }
+  constructor(private navCtrl: NavController, public alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -41,7 +41,7 @@ export class AdminPage implements OnInit {
           role: "submit",
           cssClass: "secondary",
           handler: () => {
-            
+            this.navCtrl.navigateRoot(["/item"]);
           }
         }
       ]

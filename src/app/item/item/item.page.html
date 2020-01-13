@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar class="bg-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>จัดการชุดข้อสอบ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg">
+
+  <ion-card padding class="bg-gradient-blue">
+
+    <ion-card-header>
+      <ion-icon name="add-circle-outline"></ion-icon>
+      <ion-label>
+        เพิ่มชุดข้อสอบ
+      </ion-label>
+    </ion-card-header>
+
+    <!-- Item -->
+    <div padding>
+
+      <ion-item>
+        <ion-label position="floating">
+          ชื่อ-นามสกุล
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="a" placeholder=""></ion-input>
+      </ion-item>
+
+      <ion-item style="border-radius: 5px; margin-top: 5px;">
+        <ion-label position="floating">
+          ชื่อผู้ใช้งาน
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="b" placeholder=""></ion-input>
+      </ion-item>
+
+      <ion-item style="border-radius: 5px; margin-top: 5px;">
+        <ion-label position="floating">
+          รหัสผ่าน
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="c" placeholder=""></ion-input>
+      </ion-item>
+
+    </div>
+    <!-- end Item -->
+
+  </ion-card>
+
+
+
+</ion-content>

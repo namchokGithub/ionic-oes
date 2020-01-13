@@ -12,7 +12,9 @@ export class ReviewStudentPage implements OnInit {
   private crsId: number;
   private Year: number;
   private crs_term: number;
-
+  private search_dfe_year:string
+  private search_dfe_tm_id:string
+  private search_ib_sub_id:string
   private rs_year: [];
   private rs_subject: [];
   private rs_result_exam_student: [];
@@ -46,12 +48,16 @@ export class ReviewStudentPage implements OnInit {
       alert.present();
       console.log("NULL");
     } else {
+      this.search_dfe_year = this.Year != null ? 'AND tsp60_nu_oesdb.oes_define_exam.dfe_year = '+ this.Year : ' ';
+      this.search_dfe_tm_id = this.crs_term != null ? 'AND tsp60_nu_oesdb.oes_define_exam.dfe_tm_id = '+ this.crs_term : ' ';
+      this.search_ib_sub_id = this.crsId != null ? 'AND tsp60_nu_persdb.pers_item_bank.ib_sub_id = '+ this.crsId : ' ';
       this.ReviewTestingService.show_result_exam_student(
-        this.crsId,
-        this.Year,
-        this.crs_term
-      ).subscribe(result => {
-        this.rs_result_exam_student = result;
+        this.search_dfe_year,
+        this.search_dfe_tm_id,
+        this.search_ib_sub_id
+      ).subscribe((response) => {
+        console.log(response);
+        this.rs_result_exam_student = response
         this.hide = true;
         // console.log(this.rs_result_exam_student)
       });

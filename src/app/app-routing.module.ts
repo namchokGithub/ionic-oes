@@ -35,7 +35,9 @@ const routes: Routes = [
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' }
   ,{ path: 'review-student', loadChildren: './Exam_review/review-student/review-student.module#ReviewStudentPageModule' },
   { path: 'regis', loadChildren: './regis/regis/regis.module#RegisPageModule' },
-  { path: 'admin', loadChildren: './admin/admin/admin.module#AdminPageModule' }
+  { path: 'admin', loadChildren: './admin/admin/admin.module#AdminPageModule' },
+  { path: 'item', loadChildren: './item/item/item.module#ItemPageModule' },
+  { path: 'user', loadChildren: './user/user/user.module#UserPageModule' }
 ];
 
 @NgModule({
