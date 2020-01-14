@@ -57,17 +57,15 @@
           <ion-input type="number" [(ngModel)]="ib_option_amount" placeholder="โปรดกรอกข้อมูล"></ion-input>
       </ion-item>
       <!-- end Item -->
-
-  </ion-card>
-
-  <ion-card style="border-style: none;">
       <ion-row>
-          <ion-col>
-              <ion-button (click)="cancle_Exam()" color="danger" float-left>ยกเลิก</ion-button>
-          </ion-col>
-          <ion-col>
-              <ion-button (click)="save_Exam()" color="success" float-right>ยืนยัน</ion-button>
-          </ion-col>
-      </ion-row>
+        <ion-col>
+            <ion-button (click)="cancle_Exam()" color="danger" float-left>ยกเลิก</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button (click)="save_Exam()" color="success" float-right>ยืนยัน</ion-button>
+        </ion-col>
+    </ion-row>
   </ion-card>
+
+  
 </ion-content>

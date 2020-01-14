@@ -26,6 +26,11 @@ export class ItemPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.ib_code = null
+    this.ib_name = null
+    this.ib_sub_id = null
+    this.ib_stem_amount = null
+    this.ib_option_amount = null
     this.get_subject_all()
     this.get_question_all()
   }

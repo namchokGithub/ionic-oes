@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content class="bg">
-
     <ion-card style="background-color: white;">
 
         <ion-card-header class="bg-gradient-purple">
@@ -16,31 +15,55 @@
                 <ion-icon name="albums"></ion-icon> แก้ไขชุดข้อสอบ
             </h3>
         </ion-card-header>
-
+  
         <!-- Item -->
-        <ion-list lines="none">
-            <ion-item>
-                <ion-label position="floating">
-                    ชื่อชุดข้อสอบ
-                </ion-label>
-                <ion-input type="text" [(ngModel)]="ib_name" placeholder=""></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">
-                    จำนวนคำถาม
-                </ion-label>
-                <ion-input type="number" [(ngModel)]="ib_stem_amount" placeholder=""></ion-input>
-            </ion-item>
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="cancle_Exam()" color="danger" float-left>ยกเลิก</ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button (click)="edit_Exam()" color="success" float-right>ยืนยัน</ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-list>
-
+        <ion-item>
+  
+            <ion-label position="floating">
+                รหัสวิชา
+            </ion-label>
+            <ion-select placeholder="โปรดเลือก" name="ib_sub_id" [(ngModel)]="ib_sub_id">
+                <ion-select-option style="font-family: 'Prompt', sans-serif;" *ngFor="let rs_subject of rs_subject;let i = index" [value]="rs_subject.sub_id">
+                    {{rs_subject.sub_code_th}} {{rs_subject.sub_name_th}}
+                </ion-select-option>
+            </ion-select>
+  
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">
+                รหัสชุดข้อสอบ
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="ib_code" placeholder="โปรดกรอกข้อมูล"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+            <ion-label position="floating">
+                ชื่อชุดข้อสอบ
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="ib_name" placeholder="โปรดกรอกข้อมูล"></ion-input>
+        </ion-item>
+  
+        <ion-item style="border-radius: 5px; margin-top: 5px;">
+            <ion-label position="floating">
+                จำนวนคำถาม
+            </ion-label>
+            <ion-input type="number" [(ngModel)]="ib_stem_amount" placeholder="โปรดกรอกข้อมูล"></ion-input>
+        </ion-item>
+        <ion-item style="border-radius: 5px; margin-top: 5px;">
+            <ion-label position="floating">
+                จำนวนคำตอบ
+            </ion-label>
+            <ion-input type="number" [(ngModel)]="ib_option_amount" placeholder="โปรดกรอกข้อมูล"></ion-input>
+        </ion-item>
         <!-- end Item -->
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="cancle_Exam()" color="danger" float-left>ยกเลิก</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="edit_Exam()" color="success" float-right>ยืนยัน</ion-button>
+            </ion-col>
+        </ion-row>
     </ion-card>
+   
 </ion-content>

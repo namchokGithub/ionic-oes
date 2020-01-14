@@ -61,7 +61,7 @@ export class HomePage {
     if (this.username != "" && this.password != "") {
 
       for(let i=0;i<this.allUser.length;i++) {
-        if(this.username==this.allUser[i].user_id && this.username==this.allUser[i].user_password){
+        if(this.username==this.allUser[i].user_id && this.password==this.allUser[i].user_password){
           this.name = this.allUser[i].user_firstname + " " + this.allUser[i].user_lastname
           check = false
 
