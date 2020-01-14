@@ -22,7 +22,7 @@ export class ExamServiceService {
     return this.http.get('http://localhost:3000/pers/delete_pers_item_bank/'+ib_id).pipe(map(res => res.json()))
   }
 
-  update_pers_item_bank(ib_code:number,ib_name:string,ib_sub_id:string,ib_stem_amount:number,ib_option_amount:string,ib_id:number){
+  update_pers_item_bank(ib_code:string ,ib_name:string,ib_sub_id:number,ib_stem_amount:number,ib_option_amount:number,ib_id:number){
     return this.http.get('http://localhost:3000/pers/update_pers_item_bank/'+ib_code+'/'+ib_name+'/'+ib_sub_id+'/'+ib_stem_amount+'/'+ib_option_amount+'/'+ib_id).pipe(map(res => res.json()))
   }
   

@@ -9,6 +9,7 @@ import { ExamServiceService } from "src/app/api/exam-service.service";
 })
 export class EditPage implements OnInit {
   private ib_code:string
+  private ib_id:number
   private ib_name:string
   private ib_sub_id:number
   private ib_stem_amount:number 
@@ -16,6 +17,7 @@ export class EditPage implements OnInit {
   private ib_question_insert:[]
   private ib_question:[]
   private rs_subject:[]
+  private sub_name: string
 
   constructor(
     private menuCtrl: MenuController,
@@ -32,7 +34,7 @@ export class EditPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.ib_id)
+    // console.log(this.ib_id)
     this.examServiceService.get_pers_item_bank_by_id(this.ib_id).subscribe((res) => {
       console.log(res)
       this.ib_code = res[0].ib_code
@@ -46,8 +48,13 @@ export class EditPage implements OnInit {
 
   get_subject_all() {
     this.examServiceService.get_subject_all().subscribe((res) => {
-      console.log(res)
       this.rs_subject = res
+      // console.log(this.rs_subject)
+      for(let i=0;i<this.rs_subject.length;i++) {
+        if(this.ib_sub_id==this.rs_subject[i].sub_id) {
+          this.sub_name = this.rs_subject[i].sub_code_th + this.rs_subject[i].sub_name_th
+        }
+      }
     });
   }
 

@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>ผู้ดูแลระบบ</ion-title>
+        <ion-title>การจัดการชุดข้อสอบ</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -18,12 +18,13 @@
             <ion-item>
                 <ion-grid>
                     <ion-row>
-                        <ion-label align-self-center style="font-family: 'Prompt', sans-serif;">
+                        <ion-label align-self-center>
                             วิชา
                             <ion-text color="danger">*</ion-text>
                         </ion-label>
                         <ion-select placeholder="โปรดเลือก" name="crsId" [(ngModel)]="crsId">
-                            <ion-select-option style="font-family: 'Prompt', sans-serif;" *ngFor="let rs_subject of rs_subject;let i = index" [value]="rs_subject.sub_id">
+                            <ion-select-option
+                                *ngFor="let rs_subject of rs_subject;let i = index" [value]="rs_subject.sub_id">
                                 {{rs_subject.sub_code_th}} {{rs_subject.sub_name_th}}
                             </ion-select-option>
                         </ion-select>
@@ -40,7 +41,7 @@
     <!-- End find all subject -->
 
     <!-- Show all subject item -->
-    <ion-card class="bg-gradient-purple">
+    <ion-card *ngIf="hide" class="bg-gradient-purple">
         <ion-card-header>
             <h3>รายการชุดข้อสอบทั้งหมด</h3>
         </ion-card-header>

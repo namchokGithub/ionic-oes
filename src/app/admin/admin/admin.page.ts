@@ -14,6 +14,7 @@ export class AdminPage implements OnInit {
   private rs_subject: []
   private rs_exam: []
  
+  private hide: boolean = false
 
   constructor(
     private ExamServiceService: ExamServiceService,
@@ -100,6 +101,7 @@ export class AdminPage implements OnInit {
   searchSubject(){
     console.log(this.crsId);
     this.get_exam_all()
+    this.hide = true
   }
 
   edit(ib_id:number){
