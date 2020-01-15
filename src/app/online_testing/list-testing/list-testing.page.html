@@ -11,7 +11,7 @@
     <ion-card class="bg-gradient-blue" (click)="check()">
         <!-- Header -->
         <ion-card-header>
-            <h3>ค้นหารายการสอบ</h3>
+            <h3><ion-icon name="search"></ion-icon> ค้นหารายการสอบ</h3>
         </ion-card-header>
 
         <!-- List subject -->
@@ -30,6 +30,7 @@
         <ion-item>
             <ion-label>ประเภทการสอบ</ion-label>
         </ion-item>
+
         <ion-item lines="none">
             <ion-select name="type_exam" [(ngModel)]="type_exam" placeholder="โปรดเลือก" (ngModelChange)="check()">
                 <ion-select-option value="1" selected with="100px !important">สอบเก็บคะแนน</ion-select-option>
@@ -41,11 +42,11 @@
 
     <ion-card *ngIf="hide" class="bg-gradient-blue">
         <ion-card-header>
-            <h3>รายการสอบ</h3>
+            <h3><ion-icon name="list"></ion-icon> รายการสอบ</h3>
         </ion-card-header>
         <ion-list>
             <div *ngFor="let list of listtest; let i = index">
-                <ion-item detail="false" (click)='onGoToNextPage(list.asg_id)'
+                <ion-item lines="none" detail="false" (click)='onGoToNextPage(list.asg_id)'
                     *ngIf="(type_exam == list.type_exam && name_subject == list.code_sub) && list.status_test != 0">
                     <ion-label>
                         {{list.test_name}} - {{type_exam_name}}
